@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Media remediasi interaktif Gerak Melingkar Beraturan untuk siswa SMA kelas XI.">
+  <title>OrbitLab — Belajar Gerak Melingkar Beraturan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" data-go="home" aria-label="OrbitLab beranda">
+        <span class="brand-mark">◎</span><span>orbit<span class="brand-light">lab</span></span>
+      </a>
+      <div class="topbar-right">
+        <span class="student-chip" id="studentChip">Siswa</span>
+        <button class="icon-btn" id="homeBtn" title="Kembali ke beranda" aria-label="Beranda">⌂</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- SLIDE 1: IDENTITAS -->
+      <section class="screen active" id="screen-welcome">
+        <div class="welcome-layout">
+          <div class="welcome-copy">
+            <div class="eyebrow"><span class="eyebrow-dot"></span> VIRTUAL PHYSICS LEARNING</div>
+            <h1>Kenali gerak.<br><span class="serif-accent">Pahami</span> orbitnya.</h1>
+            <p class="lead">Jelajahi Gerak Melingkar Beraturan melalui ilustrasi, eksperimen virtual, dan tantangan konsep fisika.</p>
+            <div class="welcome-art" aria-label="Ilustrasi lintasan melingkar">
+              <svg viewBox="0 0 520 250" role="img">
+                <circle cx="250" cy="125" r="88" fill="none" stroke="#b6c9b1" stroke-width="2" stroke-dasharray="6 7"/>
+                <circle cx="250" cy="125" r="5" fill="#244b3c"/>
+                <line x1="250" y1="125" x2="338" y2="125" stroke="#527a60" stroke-width="2"/>
+                <path d="M321 115 L338 125 L321 135" fill="none" stroke="#527a60" stroke-width="2"/>
+                <circle cx="338" cy="125" r="12" fill="#d6a85d" stroke="#244b3c" stroke-width="3"/>
+                <path d="M338 125 L338 78" stroke="#d6a85d" stroke-width="3" stroke-linecap="round"/>
+                <path d="M329 88 L338 76 L347 88" fill="none" stroke="#d6a85d" stroke-width="3"/>
+                <path d="M155 125 A95 95 0 0 1 250 30" fill="none" stroke="#527a60" stroke-width="3" stroke-linecap="round"/>
+                <path d="M240 36 L251 28 L252 42" fill="none" stroke="#527a60" stroke-width="3"/>
+                <text x="260" y="147" fill="#527a60" font-size="13">r</text>
+                <text x="355" y="77" fill="#244b3c" font-size="13" font-weight="700">v</text>
+                <text x="250" y="232" text-anchor="middle" fill="#6c7b6d" font-size="12">Lintasan melingkar • arah gerak • vektor</text>
+              </svg>
+            </div>
+          </div>
+          <form class="identity-card" id="identityForm">
+            <div class="card-kicker">MULAI PEMBELAJARAN</div>
+            <h2>Siapa yang sedang belajar?</h2>
+            <p class="muted">Isi identitasmu terlebih dahulu, ya.</p>
+            <label for="studentName">Nama lengkap</label>
+            <input id="studentName" name="studentName" type="text" placeholder="Contoh: Anisa Putri" required maxlength="60">
+            <label for="schoolName">Asal sekolah</label>
+            <input id="schoolName" name="schoolName" type="text" placeholder="Contoh: SMA Negeri 1 ..." required maxlength="100">
+            <button class="btn btn-primary btn-full" type="submit">Mulai belajar <span>→</span></button>
+            <p class="tiny-note">Identitas digunakan untuk menyapa dan menampilkan sesi belajarmu di halaman ini.</p>
+          </form>
+        </div>
+      </section>
+
+      <!-- SLIDE 2: BERANDA -->
+      <section class="screen" id="screen-home">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">BERANDA PEMBELAJARAN</div>
+            <h1>Halo, <span class="serif-accent" id="welcomeName">Teman Belajar</span>!</h1>
+            <p class="lead small-lead">Hari ini kita akan memahami gerak melingkar dari berbagai sudut pandang.</p>
+          </div>
+          <div class="orbit-stamp"><span>GMB</span><small>CLASS XI<br>PHYSICS</small></div>
+        </div>
+        <div class="progress-panel">
+          <div><span class="panel-label">PERJALANAN BELAJARMU</span><strong>Mulai dari konsep, lanjutkan dengan eksperimen.</strong></div>
+          <div class="progress-track"><span id="progressFill"></span></div>
+          <span class="progress-caption" id="progressText">0 dari 3 bagian selesai</span>
+        </div>
+        <div class="section-title"><div><span class="eyebrow">PILIH KEGIATAN</span><h2>Jelajahi OrbitLab</h2></div></div>
+        <div class="menu-grid">
+          <button class="menu-card" data-go="material">
+            <span class="menu-number">01 / LEARN</span><span class="menu-icon icon-book">▤</span>
+            <h3>Materi GMB</h3><p>Bangun pemahaman dari besaran sudut hingga gaya sentripetal.</p><span class="card-link">Pelajari materi <b>↗</b></span>
+          </button>
+          <button class="menu-card featured" data-go="simulation">
+            <span class="menu-number">02 / EXPLORE</span><span class="menu-icon icon-lab">◉</span>
+            <h3>Laboratorium Virtual</h3><p>Ubah parameter, amati gerak, dan uji pemahaman melalui enam fenomena.</p><span class="card-link">Mulai simulasi <b>↗</b></span>
+          </button>
+          <button class="menu-card" data-go="quiz">
+            <span class="menu-number">03 / PRACTICE</span><span class="menu-icon icon-quiz">✳</span>
+            <h3>Latihan Soal</h3><p>Uji konsep melalui pertanyaan dan pembahasan langsung.</p><span class="card-link">Kerjakan latihan <b>↗</b></span>
+          </button>
+        </div>
+        <div class="home-note"><span class="note-icon">✦</span><p><strong>Ingat:</strong> dalam gerak melingkar beraturan, kelajuan dapat tetap, tetapi arah kecepatan selalu berubah. Karena itu, benda tetap mengalami percepatan.</p></div>
+      </section>
+
+      <!-- SLIDE 3: MATERI -->
+      <section class="screen" id="screen-material">
+        <div class="page-heading compact">
+          <div><div class="eyebrow">MODUL 01 • LEARN</div><h1>Memahami <span class="serif-accent">GMB</span></h1><p class="lead small-lead">Kenali besaran dan hubungan antarbesaran dalam gerak melingkar beraturan.</p></div>
+          <span class="chapter-pill">SMA KELAS XI</span>
+        </div>
+        <div class="material-layout">
+          <aside class="contents-card">
+            <span class="panel-label">DAFTAR MATERI</span>
+            <a href="#m-pengertian">01. Pengertian GMB</a><a href="#m-sudut">02. Besaran sudut</a><a href="#m-linear">03. Besaran linear</a><a href="#m-sentripetal">04. Percepatan & gaya</a><a href="#m-ringkas">05. Ringkasan rumus</a>
+          </aside>
+          <div class="lesson-content">
+            <article class="lesson-block" id="m-pengertian">
+              <span class="lesson-index">01 — KONSEP DASAR</span><h2>Apa itu Gerak Melingkar Beraturan?</h2>
+              <p>Gerak Melingkar Beraturan (GMB) adalah gerak suatu benda pada lintasan berbentuk lingkaran dengan <strong>kelajuan linear tetap</strong> dan <strong>kecepatan sudut tetap</strong>. Walaupun kelajuannya tetap, arah kecepatan linear berubah setiap saat.</p>
+              <div class="concept-visual">
+                <svg viewBox="0 0 620 250" role="img" aria-label="Diagram GMB dengan vektor kecepatan tangensial dan percepatan menuju pusat">
+                  <circle cx="220" cy="125" r="83" fill="#edf2e9" stroke="#9bb49a" stroke-width="2" stroke-dasharray="5 6"/>
+                  <circle cx="220" cy="125" r="4" fill="#244b3c"/>
+                  <line x1="220" y1="125" x2="303" y2="125" stroke="#8ca58b" stroke-width="2"/>
+                  <circle cx="303" cy="125" r="10" fill="#d6a85d" stroke="#244b3c" stroke-width="2"/>
+                  <line x1="303" y1="125" x2="303" y2="54" stroke="#397ca0" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M295 65 L303 52 L311 65" fill="none" stroke="#397ca0" stroke-width="3"/>
+                  <line x1="303" y1="125" x2="242" y2="125" stroke="#c46a4b" stroke-width="4" stroke-linecap="round"/>
+                  <path d="M253 117 L239 125 L253 133" fill="none" stroke="#c46a4b" stroke-width="3"/>
+                  <text x="316" y="57" fill="#397ca0" font-size="15" font-weight="700">v (tangensial)</text>
+                  <text x="90" y="109" fill="#c46a4b" font-size="14" font-weight="700">aₛ (ke pusat)</text>
+                  <text x="210" y="145" fill="#244b3c" font-size="12">O</text>
+                  <text x="263" y="145" fill="#527a60" font-size="13">r</text>
+                  <text x="420" y="90" fill="#244b3c" font-size="15" font-weight="700">Arah v ⟂ r</text>
+                  <text x="420" y="117" fill="#244b3c" font-size="13">Kecepatan menyinggung</text>
+                  <text x="420" y="137" fill="#244b3c" font-size="13">lintasan lingkaran.</text>
+                  <text x="420" y="177" fill="#c46a4b" font-size="15" font-weight="700">aₛ menuju pusat</text>
+                  <text x="420" y="198" fill="#244b3c" font-size="13">Percepatan mengubah</text>
+                  <text x="420" y="218" fill="#244b3c" font-size="13">arah kecepatan.</text>
+                </svg>
+                <div class="legend"><span><i class="dot blue"></i> Kecepatan linear (v)</span><span><i class="dot terracotta"></i> Percepatan sentripetal (aₛ)</span></div>
+              </div>
+              <div class="fact-strip"><strong>Hal penting:</strong> kelajuan tetap ≠ kecepatan tetap. Kecepatan adalah besaran vektor yang memiliki besar dan arah.</div>
+            </article>
+
+            <article class="lesson-block" id="m-sudut">
+              <span class="lesson-index">02 — BESARAN SUDUT</span><h2>Periode, frekuensi, dan kecepatan sudut</h2>
+              <div class="definition-grid">
+                <div class="definition"><h3>Periode (T)</h3><p>Waktu yang diperlukan untuk menyelesaikan satu putaran.</p><div class="formula">T = t / n</div><small>Satuan: sekon (s)</small></div>
+                <div class="definition"><h3>Frekuensi (f)</h3><p>Banyaknya putaran yang dilakukan setiap satu sekon.</p><div class="formula">f = n / t = 1/T</div><small>Satuan: hertz (Hz)</small></div>
+                <div class="definition"><h3>Kecepatan sudut (ω)</h3><p>Perubahan posisi sudut terhadap waktu.</p><div class="formula">ω = Δθ / Δt</div><small>Satuan: rad/s</small></div>
+              </div>
+              <div class="formula-banner"><span>Untuk satu putaran penuh</span><strong>ω = 2π/T = 2πf</strong><small>Sudut satu putaran = 2π radian = 360°</small></div>
+            </article>
+
+            <article class="lesson-block" id="m-linear">
+              <span class="lesson-index">03 — BESARAN LINEAR</span><h2>Kecepatan linear dan hubungan dengan jari-jari</h2>
+              <p>Kecepatan linear adalah laju perubahan panjang busur terhadap waktu. Arah vektor kecepatan linear selalu menyinggung lintasan lingkaran.</p>
+              <div class="formula-banner green-banner"><span>Hubungan kecepatan linear dan sudut</span><strong>v = ωr</strong><small>v dalam m/s, ω dalam rad/s, dan r dalam meter.</small></div>
+              <div class="example-box"><strong>Contoh: komidi putar</strong><p>Dua siswa berada pada komidi putar yang sama. Keduanya memiliki kecepatan sudut dan periode yang sama. Namun, siswa yang lebih jauh dari pusat memiliki kecepatan linear lebih besar karena nilai r lebih besar.</p><p class="equation">Jika ω sama: r lebih besar → v lebih besar.</p></div>
+            </article>
+
+            <article class="lesson-block" id="m-sentripetal">
+              <span class="lesson-index">04 — PERCEPATAN & GAYA</span><h2>Percepatan dan gaya sentripetal</h2>
+              <p>Percepatan sentripetal adalah percepatan yang arahnya selalu menuju pusat lingkaran. Dalam GMB, percepatan ini mengubah arah vektor kecepatan, bukan besar kelajuannya.</p>
+              <div class="formula-row"><div><span>Percepatan sentripetal</span><strong>aₛ = v²/r</strong><small>atau aₛ = ω²r</small></div><div><span>Gaya resultan radial</span><strong>Fₛ = m aₛ</strong><small>Fₛ = mv²/r</small></div></div>
+              <div class="warning-strip"><strong>Jangan tertukar:</strong> gaya sentripetal bukan jenis gaya baru. Istilah ini menyatakan resultan gaya yang arahnya menuju pusat. Sumbernya dapat berupa tegangan tali, gesekan, gravitasi, atau gaya normal sesuai situasi.</div>
+              <h3 class="subheading">Apa yang terjadi jika gaya sentripetal hilang?</h3>
+              <p>Benda akan melanjutkan gerak sesaatnya menurut arah kecepatan saat itu, yaitu sepanjang garis singgung lintasan (jika resultan gaya lain diabaikan). Benda tidak otomatis bergerak radial menjauhi pusat.</p>
+            </article>
+
+            <article class="lesson-block" id="m-ringkas">
+              <span class="lesson-index">05 — RINGKASAN</span><h2>Peta rumus GMB</h2>
+              <div class="formula-table">
+                <div><span>Periode</span><b>T = t/n</b></div><div><span>Frekuensi</span><b>f = n/t = 1/T</b></div>
+                <div><span>Kecepatan sudut</span><b>ω = 2πf = 2π/T</b></div><div><span>Kecepatan linear</span><b>v = ωr</b></div>
+                <div><span>Percepatan sentripetal</span><b>aₛ = v²/r = ω²r</b></div><div><span>Gaya sentripetal</span><b>Fₛ = mv²/r = mω²r</b></div>
+              </div>
+              <p class="muted small">Catatan: rumus gaya sentripetal menyatakan besar resultan gaya radial menuju pusat, bukan berarti selalu ada satu gaya khusus bernama gaya sentripetal.</p>
+            </article>
+            <button class="btn btn-primary" data-go="simulation">Lanjut ke laboratorium virtual →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 4: SIMULASI -->
+      <section class="screen" id="screen-simulation">
+        <div class="page-heading compact">
+          <div><div class="eyebrow">MODUL 02 • EXPLORE</div><h1>Laboratorium <span class="serif-accent">Virtual</span></h1><p class="lead small-lead">Ubah parameter dan amati bagaimana gerak melingkar bekerja.</p></div>
+          <span class="chapter-pill">EKSPERIMEN GMB</span>
+        </div>
+        <div class="simulation-layout">
+          <aside class="scenario-list">
+            <span class="panel-label">PILIH FENOMENA</span>
+            <button class="scenario active" data-scenario="general"><span>◎</span><span><b>Eksperimen GMB</b><small>Atur r dan ω</small></span></button>
+            <button class="scenario" data-scenario="carousel"><span>◉</span><span><b>1. Komidi putar</b><small>Kecepatan linear</small></span></button>
+            <button class="scenario" data-scenario="string"><span>↗</span><span><b>2. Bola dan tali</b><small>Arah setelah tali putus</small></span></button>
+            <button class="scenario" data-scenario="motorcycle"><span>⌁</span><span><b>3. Motor di tikungan</b><small>Gaya gesek</small></span></button>
+            <button class="scenario" data-scenario="ferris"><span>◌</span><span><b>4. Kincir ria</b><small>Percepatan sentripetal</small></span></button>
+            <button class="scenario" data-scenario="washer"><span>◍</span><span><b>5. Mesin cuci</b><small>Lintasan air keluar</small></span></button>
+            <button class="scenario" data-scenario="bicycle"><span>⊙</span><span><b>6. Roda sepeda</b><small>Perbandingan titik A dan B</small></span></button>
+          </aside>
+          <div class="lab-main">
+            <div class="lab-heading"><div><span class="panel-label">SIMULASI AKTIF</span><h2 id="scenarioTitle">Eksperimen GMB</h2><p id="scenarioDescription">Amati hubungan jari-jari, kecepatan sudut, dan kecepatan linear.</p></div><span class="live-pill"><i></i> VIRTUAL LAB</span></div>
+            <div class="canvas-wrap"><canvas id="physicsCanvas" width="900" height="480" aria-label="Area simulasi fisika"></canvas><div class="canvas-label" id="canvasLabel">MODEL GERAK MELINGKAR</div></div>
+            <div class="control-panel" id="generalControls">
+              <div class="control-head"><b>Kontrol eksperimen</b><span>Ubah nilai, amati hasilnya</span></div>
+              <div class="slider-grid">
+                <label>Jari-jari (r)<strong><output id="radiusOut">2.0</output> m</strong><input id="radiusSlider" type="range" min="0.5" max="4" step="0.1" value="2"></label>
+                <label>Kecepatan sudut (ω)<strong><output id="omegaOut">1.5</output> rad/s</strong><input id="omegaSlider" type="range" min="0.2" max="4" step="0.1" value="1.5"></label>
+                <label>Massa (m)<strong><output id="massOut">1.0</output> kg</strong><input id="massSlider" type="range" min="0.5" max="5" step="0.5" value="1"></label>
+              </div>
+              <div class="toggle-row"><label class="check-label"><input type="checkbox" id="showVelocity" checked> Vektor kecepatan</label><label class="check-label"><input type="checkbox" id="showAccel" checked> Vektor percepatan</label><label class="check-label"><input type="checkbox" id="showRadius" checked> Jari-jari</label></div>
+            </div>
+            <div class="scenario-controls hidden" id="scenarioControls">
+              <div class="control-head"><b>Kontrol fenomena</b><span id="scenarioControlHint">Jalankan dan amati</span></div>
+              <div id="scenarioControlBody"></div>
+            </div>
+            <div class="lab-actions"><button class="btn btn-primary" id="playBtn">Ⅱ Jeda</button><button class="btn btn-secondary" id="resetBtn">↺ Ulangi</button><span class="muted tiny" id="simStatus">Simulasi berjalan</span></div>
+            <div class="readout-grid">
+              <div class="readout"><span>KECEPATAN LINEAR</span><strong id="readV">3.00 <small>m/s</small></strong></div>
+              <div class="readout"><span>PERCEPATAN SENTRIPETAL</span><strong id="readA">4.50 <small>m/s²</small></strong></div>
+              <div class="readout"><span>PERIODE</span><strong id="readT">4.19 <small>s</small></strong></div>
+              <div class="readout"><span>GAYA SENTRIPETAL</span><strong id="readF">4.50 <small>N</small></strong></div>
+            </div>
+            <div class="explanation-card"><span class="explain-icon">✦</span><div><b id="explanationTitle">Apa yang perlu diamati?</b><p id="explanationText">Ketika jari-jari diperbesar sementara ω tetap, kecepatan linear bertambah karena v = ωr.</p></div></div>
+            <div class="misconception-card"><span class="panel-label">LURUSKAN MISKONSEPSI</span><p id="misconceptionText">Pada satu benda tegar yang berputar, semua titik memiliki kecepatan sudut yang sama, tetapi kecepatan linearnya bergantung pada jarak dari sumbu putar.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 5: LATIHAN -->
+      <section class="screen" id="screen-quiz">
+        <div class="page-heading compact">
+          <div><div class="eyebrow">MODUL 03 • PRACTICE</div><h1>Uji pemahaman <span class="serif-accent">konsepmu</span></h1><p class="lead small-lead">Pilih jawaban, tentukan alasan, lalu baca umpan baliknya.</p></div>
+          <span class="chapter-pill">6 PERTANYAAN</span>
+        </div>
+        <div class="quiz-layout">
+          <div class="quiz-progress"><div><span class="panel-label">PROGRES LATIHAN</span><b id="questionCounter">PERTANYAAN 1 DARI 6</b></div><div class="quiz-track"><span id="quizProgressFill"></span></div></div>
+          <div class="question-card" id="questionCard">
+            <div class="question-top"><span class="question-tag" id="questionTag">KONSEP KECEPATAN LINEAR</span><span class="question-number" id="questionNumber">01</span></div>
+            <h2 id="questionText"></h2>
+            <div class="answer-list" id="answerList"></div>
+            <div class="reason-area"><label for="reasonSelect">Mengapa kamu memilih jawaban tersebut?</label><select id="reasonSelect"><option value="">Pilih alasan yang paling sesuai</option></select></div>
+            <div class="confidence-area"><label>Seberapa yakin kamu dengan jawabanmu?</label><div class="confidence-options" id="confidenceOptions"></div><div class="confidence-legend"><span>0 = menebak</span><span>5 = sangat yakin</span></div></div>
+            <div class="quiz-actions"><button class="btn btn-secondary" id="prevQuestion">← Sebelumnya</button><button class="btn btn-primary" id="checkAnswer">Periksa jawaban</button><button class="btn btn-primary hidden" id="nextQuestion">Selanjutnya →</button></div>
+            <div class="feedback hidden" id="feedbackBox" aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="result-card hidden" id="resultCard"><div class="result-icon">✦</div><span class="eyebrow">LATIHAN SELESAI</span><h2>Bagus, <span id="resultName">teman belajar</span>!</h2><div class="result-score" id="resultScore">0/6</div><p id="resultMessage">Terus latih pemahaman konsepmu.</p><button class="btn btn-primary" id="retryQuiz">Ulangi latihan</button><button class="btn btn-secondary" data-go="home">Kembali ke beranda</button></div>
+      </section>
+    </main>
+    <footer class="footer"><span>◎ orbitlab</span><span>Belajar fisika dengan memahami, bukan menghafal.</span></footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
